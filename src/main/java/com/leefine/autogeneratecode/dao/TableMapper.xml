@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leefine.autogeneratecode.dao.TableMapper">
+	<select id="getTable" resultType="hashmap" parameterType="hashmap"
+		statementType="STATEMENT">
+		SELECT syscolumns.name colName,systypes.name
+		colType,syscolumns.isnullable,syscolumns.length
+		FROM syscolumns,
+		systypes WHERE syscolumns.xusertype = systypes.xusertype
+		AND
+		syscolumns.id = object_id('${tableName}')
+	</select>
+</mapper>
